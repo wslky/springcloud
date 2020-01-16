@@ -1,0 +1,52 @@
+server:
+  port: 8001
+
+mybatis:
+  config-location: classpath:mybatis/mybatis.xml                                            #配置文件所在路径
+  type-aliases-package: com.exer.springcloud.entities                                       #实体类包
+  mapper-locations:
+    - classpath:mybatis/mapper/**/*.xml
+
+spring:
+  application:
+    name: microserviceclod-dept #对外暴露统一的实例名称
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource                                            #数据源
+    driver-class-name: com.mysql.cj.jdbc.Driver                                             #驱动类
+    url: jdbc:mysql://localhost:3306/cloudDB01?serverTimezone=UTC
+    username: root
+    password: 123456
+    dbcp2:
+      min-idle: 5                                                                             #最小连接数
+      initial-size: 5                                                                         #初始化连接数
+      max-total: 5                                                                            #最大连接数
+      max-wait-millis: 200                                                                    #获取连接最大等待时间
+
+#注册
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+                    #注册到所有集群中
+  instance:
+    instance-id: microservicecloud-dept8001-hystrix   #hystrix服务名称
+    prefer-ip-address: true
+
+#启动的时候是会先加载bootstrap.properties或bootstrap.yml配置文件，
+#如果没有的话，则会远程从http://localhost:8888获取配置，然后才会加载到application.yaml文件。
+
+info:
+  app.name: exer-microservicecloud
+  company.name: www.exer.com
+  build.articactId: $project.artifactId$
+  build.version: $project.version$
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS

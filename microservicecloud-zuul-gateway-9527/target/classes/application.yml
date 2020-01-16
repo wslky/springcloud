@@ -1,0 +1,49 @@
+server:
+  port: 9527
+spring:
+  application:
+    name: microservicecloud-zuul-getway
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+  instance:
+    instance-id: gateway-9527.com
+    prefer-ip-address: true
+
+info:
+  app.name: exer-microservicecloud
+  company.name: www.exer.com
+  build.articactId: $project.artifactId$
+  build.version: $project.version$
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+#----------------------------
+#zuul:
+#  routes:
+#    dept:
+#      path: /dept/**
+#      url: http://localhost:8001/dept/
+
+#必须手动配置映射
+zuul:
+  prefix: /exer #请求前缀
+  ignored-services: "*" #拒绝所有非声明路径访问
+  routes:
+    api-a:
+      path: /test/**
+      service-id: MICROSERVICECLOD-DEPT
+
+ribbon:
+  eureka:
+    enabled: true
+
