@@ -8,5 +8,5 @@ spring:
       server:
         git:
           uri: https://github.com/lky492465798/microservicecloud-config.git
-          username: 492465798@qq.com
-          password: lky990125
+          username: xxxx
+          password: xxxx
