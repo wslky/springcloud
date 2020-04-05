@@ -2,6 +2,8 @@
 
 项目基于 尚硅谷视频spring cloud2018
 
+还可以学习项目模块化.
+
 项目在idea下开发,原视频在eclispe下
 spring boot和spring cloud版本也高于原视频,有些配置的pom文件有些差异.
 
