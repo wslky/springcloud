@@ -7,4 +7,8 @@ spring boot和spring cloud版本也高于原视频,有些配置的pom文件有�
 
 具体差异在配置文件中有说明.
 
-直接clone下来就可以使用
+直接clone下来就可以使用.
+
+记得star！
+
+
