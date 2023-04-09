@@ -11,6 +11,4 @@ spring boot和spring cloud版本也高于原视频,有些配置的pom文件有�
 
 直接clone下来就可以使用.
 
-记得star！
-
 
